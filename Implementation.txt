@@ -1,0 +1,93 @@
+#include <iostream>
+using namespace std;
+#include "GP142.H"
+#include "Header.h"
+#include "math.h"
+line :: line(int a,int b,int c,int d,int col)
+{
+	p[0].x=a;
+	p[0].y=b;
+	p[1].x=c;
+	p[1].y=d;
+	colour=col;
+}
+void line :: draw()
+{
+	GP142_lineXY(colour, p[0].x, p[0].y,p[1].x , p[1].y, 5);
+}
+triangle :: triangle(int a,int b,int c,int d,int e,int f,int col)
+{
+	q[0].x=a;
+	q[0].y=b;
+	
+	q[1].x=c;
+	q[1].y=d;
+	
+	q[2].x=e;
+	q[2].y=f;
+	colour=col;
+}
+void triangle :: draw()
+{
+	GP142_lineXY(colour, q[0].x, q[0].y,q[1].x , q[1].y, 5);
+	GP142_lineXY(colour, q[1].x, q[1].y,q[2].x , q[2].y, 5);
+	GP142_lineXY(colour, q[2].x, q[2].y,q[0].x , q[0].y, 5);
+}
+rectangle :: rectangle (int a,int b,int c,int d,int col)
+{
+	p[0].x=a;
+	p[0].y=b;
+	p[1].x=c;
+	p[1].y=d;
+	colour=col;
+
+
+
+}
+void rectangle :: draw()
+{
+	GP142_lineXY(colour, p[0].x, p[0].y,p[1].x , p[0].y, 3);
+	GP142_lineXY(colour, p[1].x, p[0].y,p[1].x , p[1].y, 3);
+	GP142_lineXY(colour, p[1].x, p[1].y,p[0].x , p[1].y, 3);
+	GP142_lineXY(colour, p[0].x, p[1].y,p[0].x , p[0].y, 3);
+}
+circle :: circle (int a,int b,int c,int d,int col)
+{
+	p[0].x=a;
+	p[0].y=b;
+	p[1].x=c;
+	p[1].y=d;
+	r=(((c-a)*(c-a)+(b-d)*(b-d)));
+	r=pow(r,.5);
+	colour=col;
+}
+void circle :: draw()
+{
+	GP142_circleXY (colour,p[0].x,p[0].y,r);
+}
+bool rectangle :: is_point_present(int x,int y)
+	{
+		if (x>p[0].x && x<p[1].x && y<p[0].y && y>p[1].y)
+		{
+			return true;
+		}
+		return false;
+	}
+bool circle :: is_point_present(int x1,int y1)
+{
+	return 0;
+}
+bool line:: is_point_present(int x1,int y1)
+{
+	return 0;
+}
+bool triangle :: is_point_present(int x1,int y1)
+{
+	return 0;
+}
+void polygon :: draw()
+{
+
+	cout<<"do nothing";
+}
+

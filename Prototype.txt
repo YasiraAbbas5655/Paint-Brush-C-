@@ -1,0 +1,84 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+#include "GP142.H"
+struct point{
+	int x;
+	int y;
+};
+
+class shapes{
+protected:
+	point *p;
+	int colour;
+public:
+	virtual void draw()=0;
+	virtual bool is_point_present(int ,int )=0;
+};
+class triangle:public shapes{
+protected:
+	point q[3];
+public:
+	triangle(int,int,int,int,int,int,int);
+	bool is_point_present(int x1,int y1);
+	void draw();
+
+};
+class openshape : public shapes{
+
+
+public:
+	
+
+};
+class line: public openshape{
+protected:
+	point p[2];
+public:
+	line(int,int,int,int,int);
+	bool is_point_present(int x1,int y1);
+	void draw();
+
+};
+class curve:public openshape{
+public:
+	void draw();
+
+};
+class polygon: public shapes{
+protected:
+	vector<point> p;
+public:
+	;
+	void draw();
+
+
+};
+class rectangle: public polygon{
+protected:
+	point p[2];
+public:
+	rectangle(int,int,int,int,int);
+	void draw();
+	bool is_point_present(int ,int );
+	
+
+};
+class circle: public shapes{
+protected:
+	point p[2];
+	int r;
+public:
+	circle(int,int,int,int,int);
+	bool is_point_present(int x1,int y1);
+	void draw();
+
+
+};
+class text{
+
+
+
+};
+
+
